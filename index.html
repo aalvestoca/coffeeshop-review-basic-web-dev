@@ -24,27 +24,28 @@
             </ul>
         </nav>
     </header>
-
+<div id="div-main">
     <aside><!-- indirectly related to the document's main content -->
         <h2>Drinks</h2>
         <section id="product-names">
         </section>
     </aside>
     <main>
-        <h2>Product Details</h2>
-        <section id="product-details">
-            <article>
-                <strong><!--important--></strong>
-                <em><!--emphasis--></em>
-                <figure>
-                    <img src="" alt="" />
-                    <figcaption></figcaption>
-                </figure>
-                <!-- block-level elements: <p>, <h1>-<h6>, and the <div> ... -->
-            </article>
-            <article></article>
+        <section  id="product-details">
+            <strong><!--important--></strong>
+            <em><!--emphasis--></em>
+            <figure>
+                <img src="product-placeholder.png" alt="product-placeholder" />
+                <figcaption></figcaption>
+            </figure>
+            <!-- block-level elements: <p>, <h1>-<h6>, and the <div> ... -->
+            <!-- <h2>Product Details</h2> -->
         </section>
+        
+        
     </main>
+</div>
+
     <footer>
     </footer>
     <script src="./menu.js"></script>
@@ -72,10 +73,10 @@
 //    "Caffeine_mg": 255
         }
 
-        // window.onload = () => {
-        //     getProductNames(_ => document.getElementById("product-names").innerHTML = 
-        //     productNameArray.map(productName => `<p id="${productName}" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
-        // }
+        window.onload = () => {
+            getProductNames(_ => document.getElementById("product-names").innerHTML = 
+            productNameArray.map(productName => `<p id="${productName}" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
+        }
     </script>
 </body>
 

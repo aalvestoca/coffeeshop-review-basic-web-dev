@@ -40,6 +40,19 @@ header ul li:hover{
     cursor: pointer;
 }
 
+#div-main{
+    display: flex;
+
+}
+
 aside {
-    margin: 0 32px;
+    margin: 0 80px;
+}
+
+main{
+    width: 100%;
+}
+#product-details{
+    width: 100%;
+    background: #1e3932;
 }
