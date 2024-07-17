@@ -1,0 +1,45 @@
+body{
+    height: 100%;
+    margin: 0;
+    background-color: #fff;
+    color:rgba(0,0,0,.87);
+    font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing:-0.01;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "calt";
+    font-size: 0.9rem;
+}
+    header{
+    display: flex;
+    padding:0;
+    margin:0;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+header figure{
+    margin: 25px;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header ul li{
+    margin: 12px 12px;
+
+}
+
+header ul li:hover{
+    color: rgb(47 47 148);
+    cursor: pointer;
+}
+
+aside {
+    margin: 0 32px;
+}
