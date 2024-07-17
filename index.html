@@ -3,32 +3,64 @@
 
 <head>
     <meta charset="utf-8" /> <!-- name, http-equiv, charset, itemprop -->
-    <meta name="viewport" content="width=device-with" />
-    <title>Article Page</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Coffee Shop</title>
+
 </head>
 
 <body>
     <!-- <main>, <section>, <article>, <header>, <nav>, and <footer>.-->
     <header>
-        <nav></nav>
+        <h1>Coffee Shop</h1>
+        <nav>
+            <ul>
+                <li>Home</li>
+            </ul>
+        </nav>
     </header>
-    <aside><!-- indirectly related to the document's main content --></aside>
+
+    <aside><!-- indirectly related to the document's main content -->
+        <p>Product Name</p>
+    </aside>
     <main>
-        <section>
+        <h2>Product Details</h2>
+        <section id="product-details">
             <article>
                 <strong><!--important--></strong>
                 <em><!--emphasis--></em>
                 <figure>
-                    <img src="" alt=""/>
+                    <img src="" alt="" />
                     <figcaption></figcaption>
                 </figure>
                 <!-- block-level elements: <p>, <h1>-<h6>, and the <div> ... -->
             </article>
             <article></article>
         </section>
+        <section id="product-details-json">
+
+        </section>
     </main>
     <footer>
     </footer>
+    <script blocking="render" async id="datainjson" type="application/json" src="starbucks-nutrition.json"></script>
+    <script id="data" type="application/json">
+        [
+            {
+            "Product_Name": "brewed coffee - dark roast"
+            },
+            {
+            "Product_Name": "milk dark roast"
+            }
+        ]    
+</script>
+    <script>
+        window.onload = () => {
+            document.getElementById("product-details").innerHTML = 
+            JSON.parse(document.getElementById("data").text).map(p => `<p>${p.Product_Name}</p>`).join("")
+            document.getElementById("product-details-json").innerHTML = 
+            JSON.parse(document.getElementById("datainjson").text).map(p => `<p>${p.Product_Name}</p>`).join("")
+        }
+    </script>
 </body>
 
 </html>
