@@ -20,7 +20,9 @@
     </header>
 
     <aside><!-- indirectly related to the document's main content -->
-        <p>Product Name</p>
+        <h2>Product Name</h2>
+        <section id="product-names">
+        </section>
     </aside>
     <main>
         <h2>Product Details</h2>
@@ -36,29 +38,17 @@
             </article>
             <article></article>
         </section>
-        <section id="product-details-json">
-
-        </section>
     </main>
     <footer>
     </footer>
-    <script blocking="render" async id="datainjson" type="application/json" src="starbucks-nutrition.json"></script>
-    <script id="data" type="application/json">
-        [
-            {
-            "Product_Name": "brewed coffee - dark roast"
-            },
-            {
-            "Product_Name": "milk dark roast"
-            }
-        ]    
-</script>
+    <script src="./menu.js"></script>
     <script>
+        function getDetails(productName) {
+            console.log(productName)
+        }
+
         window.onload = () => {
-            document.getElementById("product-details").innerHTML = 
-            JSON.parse(document.getElementById("data").text).map(p => `<p>${p.Product_Name}</p>`).join("")
-            document.getElementById("product-details-json").innerHTML = 
-            JSON.parse(document.getElementById("datainjson").text).map(p => `<p>${p.Product_Name}</p>`).join("")
+            getProductNames(_ => document.getElementById("product-names").innerHTML = productNameArray.map(productName => `<p id="${productName}" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
         }
     </script>
 </body>
