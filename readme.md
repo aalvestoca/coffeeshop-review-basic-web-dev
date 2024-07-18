@@ -7,10 +7,15 @@
 ### JSON file
 https://github.com/PythonCoderUnicorn/starbucks
 
-## Create GitHub repository
+## Git World
+### Create GitHub repository
 git init  
 git remote add origin <.git>  
 git branch -M main  
+### Other used commands 
+git merge [brand-name]  
+git brand [new-brand-name]  
+git checkout [brand-destiny]  
 
 ## Create Website
 
@@ -21,7 +26,7 @@ https://www.codecademy.com/resources/docs/html/semantic-html
 
 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
 
-#### Layout
+#### Layout based on that
 https://www.starbucks.ca/menu/product/478/hot
 
 ## Project Structure
