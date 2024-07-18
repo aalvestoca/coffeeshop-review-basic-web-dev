@@ -12,7 +12,7 @@
     <!-- <main>, <section>, <article>, <header>, <nav>, and <footer>.-->
     <header>
         <figure>
-            <img src="logo.png" alt="logo" width="70"/>
+            <img src="logo.png" alt="logo" width="70" />
             <figcaption></figcaption>
         </figure>
         <h1>Star Trek Coffee</h1>
@@ -24,58 +24,65 @@
             </ul>
         </nav>
     </header>
-<div id="div-main">
-    <aside><!-- indirectly related to the document's main content -->
-        <h2>Drinks</h2>
-        <section id="product-names">
-        </section>
-    </aside>
-    <main>
-        <section  id="product-details">
-            <strong><!--important--></strong>
-            <em><!--emphasis--></em>
-            <figure>
-                <img src="product-placeholder.png" alt="product-placeholder" />
-                <figcaption></figcaption>
-            </figure>
-            <!-- block-level elements: <p>, <h1>-<h6>, and the <div> ... -->
-            <!-- <h2>Product Details</h2> -->
-        </section>
-        
-        
-    </main>
-</div>
-
+    <div id="div-main">
+        <aside><!-- indirectly related to the document's main content -->
+            <h2>Drinks</h2>
+            <section id="product-names">
+            </section>
+        </aside>
+        <main>
+            <section id="product-header">
+                <article>
+                    <strong><!--important--></strong>
+                    <em><!--emphasis--></em>
+                    <figure id="product-image">
+                        <img src="product-placeholder.png" alt="product-placeholder" />
+                        <figcaption>
+                            <h2></h2>
+                        </figcaption>
+                    </figure>
+                    <!-- block-level elements: <p>, <h1>-<h6>, and the <div> ... -->
+                </article>
+            </section>
+            <section id="product-options">
+                <article>
+                    <h2>Size Options</h2>
+                    <div id="size-options">
+                    </div>
+                </article>
+                <article>
+                    <h2>What's included</h2>
+                    <div id="included-options">
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
     <footer>
     </footer>
     <script src="./menu.js"></script>
     <script>
         function getDetails(productName) {
-            document.getElementById("product-details").innerHTML = productArray.filter(p=>p.Product_Name === productName).
-            map(p=>`<article>
-                <p>Name: ${p.Product_Name}</p>
-                <p>Size: ${p.Size}</p>
-                <p>Milk: ${p.Milk}</p>
-                <p>Whip: ${p.Whip}</p>
-                <p>Serv_Size_mL: ${p.Serv_Size_mL}</p>
-                <p>Calories: ${p.Calories}</p>
-                <p>Total_Fat_g: ${p.Total_Fat_g}</p>
-                </article>`).join("")
-
-
-//    "Saturated_Fat_g": 0,
-//    "Trans_Fat_g": 0,
-//    "Cholesterol_mg": 0,
-//    "Sodium_mg": 10,
-//    "Total_Carbs_g": 0,
-//    "Fiber_g": 0,
-//    "Sugar_g": 0,
-//    "Caffeine_mg": 255
+            document.querySelector("#product-header h2").innerText = productName;
+            document.querySelector("#size-options").innerHTML = productArray.filter(p => p.Product_Name === productName)
+                .map(m => `<div class="option ${m.Size === "grande" && "selected"}"><figure>
+                            <img src="product-placeholder.png" alt="${m.Size}" width="64"/>
+                            <figcaption><p>${m.Size}</p><p>${m.Serv_Size_mL} ml</p></figcaption>
+                        </figure></div>`).join("")
+                ;
+            document.querySelector("#included-options").innerHTML = productArray.filter(p => p.Product_Name === productName && p.Size === "grande")
+                .map(m => `<div class="option">
+                <p>Milk: ${m.Milk}</p>
+                <p>Calories: ${m.Calories}</p>
+                <p>Whip: ${m.Whip}</p>
+                <p>Sodium_mg: ${m.Sodium_mg} mg</p>
+                <p>Caffeine_mg: ${m.Caffeine_mg} mg</p>
+                </div>`).join("")
         }
 
         window.onload = () => {
-            getProductNames(_ => document.getElementById("product-names").innerHTML = 
-            productNameArray.map(productName => `<p id="${productName}" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
+            getProductNames(_ => document.getElementById("product-names").innerHTML =
+                productNameArray.map(productName => `<p id="${productName}" class="productname-menu" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
         }
     </script>
 </body>

@@ -1,58 +1,111 @@
-body{
+:root {
+    --primary-color: rgb(45 62 117);
+    --primary-background: #fff;
+    --no-emphasis-color: #a09e9e94;
+}
+
+body {
     height: 100%;
     margin: 0;
-    background-color: #fff;
-    color:rgba(0,0,0,.87);
-    font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;;
+    background-color: var(--primary-background);
+    color: rgba(0, 0, 0, .87);
+    font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    letter-spacing:-0.01;
+    letter-spacing: -0.01;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "calt";
     font-size: 0.9rem;
 }
-    header{
+
+header {
     display: flex;
-    padding:0;
-    margin:0;
-    justify-content:flex-start;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
     align-items: center;
 }
 
-header figure{
+header figure {
     margin: 25px;
 }
 
-header ul{
+header ul {
     list-style: none;
     display: flex;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-header ul li{
+header ul li {
     margin: 12px 12px;
 
 }
 
-header ul li:hover{
-    color: rgb(47 47 148);
+header ul li:hover {
+    color: var(--primary-color);
     cursor: pointer;
 }
 
-#div-main{
+#div-main {
     display: flex;
 
 }
 
 aside {
     margin: 0 80px;
+    width: 25%;
 }
 
-main{
-    width: 100%;
+.productname-menu {
+    cursor: pointer;
 }
-#product-details{
+
+.productname-menu:hover {
+    font-weight: 700;
+}
+
+main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+#product-header {
     width: 100%;
-    background: #1e3932;
+    background: var(--primary-color)
+}
+
+#product-image {
+    display: flex;
+    align-items: center;
+}
+
+#product-image h2 {
+    color: var(--primary-background)
+}
+
+#product-options {
+    display: flex;
+}
+
+#product-options article {
+    width: 50%;
+    border-bottom: 0.3rem solid var(--no-emphasis-color);
+    margin: 0 15px;
+}
+
+#size-options {
+    display: flex;
+}
+
+#size-options .option.selected {
+    border: solid #fff;
+}
+
+#size-options .option figure {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -13,6 +13,10 @@ https://www.codecademy.com/resources/docs/html/semantic-html
 
 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
 
+#### Layout
+https://www.starbucks.ca/menu/product/478/hot
+
+
 
 
 
