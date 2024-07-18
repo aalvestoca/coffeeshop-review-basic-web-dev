@@ -35,6 +35,9 @@ Browserify
 ### Automatic Browser Update
 Watchify plus extension: Live Server  
 
+### Unit Tests
+Jest  
+
 ## Running
 
 npm run watch-js  
