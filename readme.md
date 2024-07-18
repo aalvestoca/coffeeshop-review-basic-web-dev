@@ -27,7 +27,18 @@ https://www.starbucks.ca/menu/product/478/hot
 ## Project Structure
 Model-View-Controller (MVC)
 
+## Using third-party packages from NPM
 
+### Bundle Generation
+Browserify  
+
+### Automatic Browser Update
+Watchify plus extension: Live Server  
+
+## Running
+
+npm run watch-js  
+public/index.html
 
 
 

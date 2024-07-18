@@ -1,8 +1,7 @@
 function getProductsFromDB(callback) {
-    fetch("./models/starbucks-nutrition.json").then(text => text.json()).then(products => {
-        productArray = products;
-        callback(productArray);
-    })
+    const json = require('../models/starbucks-nutrition.json')
+    productArray = json
+    callback(json)
 }
 
 function getProductNamesFromDB(callback) {
@@ -11,3 +10,5 @@ function getProductNamesFromDB(callback) {
         callback(productNameArray);
     })
 }
+
+module.exports = { getProductsFromDB, getProductNamesFromDB }
