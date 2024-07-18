@@ -12,7 +12,7 @@
     <!-- <main>, <section>, <article>, <header>, <nav>, and <footer>.-->
     <header>
         <figure>
-            <img src="logo.png" alt="logo" width="70" />
+            <img src="./assets/logo.png" alt="logo" width="70" />
             <figcaption></figcaption>
         </figure>
         <h1>Star Trek Coffee</h1>
@@ -36,7 +36,7 @@
                     <strong><!--important--></strong>
                     <em><!--emphasis--></em>
                     <figure id="product-image">
-                        <img src="product-placeholder.png" alt="product-placeholder" />
+                        <img src="./assets/product-placeholder.png" alt="product-placeholder" />
                         <figcaption>
                             <h2></h2>
                         </figcaption>
@@ -60,29 +60,18 @@
     </div>
     <footer>
     </footer>
-    <script src="./menu.js"></script>
+    <script src="./controllers/productsController.js"></script>
+    <script src="./models/productsModel.js"></script>
+    <script src="./views/productsView.js"></script>
     <script>
         function getDetails(productName) {
-            document.querySelector("#product-header h2").innerText = productName;
-            document.querySelector("#size-options").innerHTML = productArray.filter(p => p.Product_Name === productName)
-                .map(m => `<div class="option ${m.Size === "grande" && "selected"}"><figure>
-                            <img src="product-placeholder.png" alt="${m.Size}" width="64"/>
-                            <figcaption><p>${m.Size}</p><p>${m.Serv_Size_mL} ml</p></figcaption>
-                        </figure></div>`).join("")
-                ;
-            document.querySelector("#included-options").innerHTML = productArray.filter(p => p.Product_Name === productName && p.Size === "grande")
-                .map(m => `<div class="option">
-                <p>Milk: ${m.Milk}</p>
-                <p>Calories: ${m.Calories}</p>
-                <p>Whip: ${m.Whip}</p>
-                <p>Sodium_mg: ${m.Sodium_mg} mg</p>
-                <p>Caffeine_mg: ${m.Caffeine_mg} mg</p>
-                </div>`).join("")
+            showProductName(productName);
+            showSizes(productName);
+            showIncludedIngredients(productName);
         }
 
         window.onload = () => {
-            getProductNames(_ => document.getElementById("product-names").innerHTML =
-                productNameArray.map(productName => `<p id="${productName}" class="productname-menu" onClick="getDetails('${productName}')">${productName}</p>`).join(""))
+            showProductNames()
         }
     </script>
 </body>
