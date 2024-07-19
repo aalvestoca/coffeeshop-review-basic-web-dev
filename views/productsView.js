@@ -1,39 +1,49 @@
+const { getProductNames, getProductByName } = require('../controllers/productsController')
+const { getSizes } = require('../controllers/productController')
+
 const ASSETS_PATH = "../assets"
 
-function showProductNames(click) {
-    const { getProductNames } = require('../controllers/productsController')
+function createElementDrinkMenu(click, callback) {
     getProductNames(productNames => {
+        const pParent = document.createElement('div');
         productNames.forEach(productName => {
             const pElement = document.createElement('p');
             pElement.textContent = productName;
             pElement.classList.add("productname-menu");
-            pElement.addEventListener('click', click)
-            document.getElementById("product-names").appendChild(pElement);
+            pElement.addEventListener('click', click);
+            pParent.appendChild((pElement))
         });
+        callback(pParent)
     })
 }
 
-function showProductName(productName) {
-    document.querySelector("#product-header h2").innerText = productName;
+function createElementSizes(productName, callback) {
+    getSizes(productName, sizes => {
+        callback(sizes.map(size => `<div class="option ${size === "grande" && "selected"}"><figure>
+            <img src="${ASSETS_PATH}/product-placeholder.png" alt="${size}" width="64"/>
+            <figcaption><p>${size}</p></figcaption>
+        </figure></div>`).join(""))
+    })
 }
 
-function showSizes(productName) {
-    document.querySelector("#size-options").innerHTML = productArray.filter(p => p.Product_Name === productName)
-        .map(m => `<div class="option ${m.Size === "grande" && "selected"}"><figure>
-                <img src="${ASSETS_PATH}/product-placeholder.png" alt="${m.Size}" width="64"/>
-                <figcaption><p>${m.Size}</p><p>${m.Serv_Size_mL} ml</p></figcaption>
-            </figure></div>`).join("")
+function createElementIngredients(productName, callback) {
+    getProductByName(productName, product => {
+        callback(`<div class="option">
+        <p>Milk: ${product.Milk}</p>
+        <p>Whip: ${product.Whip}</p>
+        <p>Serv_Size_mL: ${product.Serv_Size_mL}</p>
+        <p>Calories: ${product.Calories}</p>
+        <p>Total_Fat_g: ${product.Total_Fat_g}</p>
+        <p>Saturated_Fat_g: ${product.Saturated_Fat_g}</p>
+        <p>Trans_Fat_g: ${product.Trans_Fat_g}</p>
+        <p>Cholesterol_mg: ${product.Cholesterol_mg}</p>
+        <p>Sodium_mg: ${product.Sodium_mg}</p>
+        <p>Total_Carbs_g: ${product.Total_Carbs_g}</p>
+        <p>Fiber_g: ${product.Fiber_g}</p>
+        <p>Sugar_g: ${product.Sugar_g}</p>
+        <p>Caffeine_mg: ${product.Caffeine_mg}</p>
+        </div>`)
+    })
 }
 
-function showIncludedIngredients(productName) {
-    document.querySelector("#included-options").innerHTML = productArray.filter(p => p.Product_Name === productName && p.Size === "grande")
-        .map(m => `<div class="option">
-    <p>Milk: ${m.Milk}</p>
-    <p>Calories: ${m.Calories}</p>
-    <p>Whip: ${m.Whip}</p>
-    <p>Sodium: ${m.Sodium_mg} mg</p>
-    <p>Caffeine: ${m.Caffeine_mg} mg</p>
-    </div>`).join("")
-}
-
-module.exports = { showProductNames, showProductName, showSizes, showIncludedIngredients }
+module.exports = { createElementDrinkMenu, createElementSizes, createElementIngredients }
