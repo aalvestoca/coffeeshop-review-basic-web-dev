@@ -1,4 +1,5 @@
 const { getProductsFromDB, getProductNamesFromDB } = require('../models/productsModel')
+const { sanitizeProduct } = require('./productController')
 
 var productArray = [];
 var productNameArray = [];
@@ -6,14 +7,14 @@ var productNameArray = [];
 function getProducts(callback) {
     productArray.length > 0 ? callback(productArray) :
         getProductsFromDB(products => {
-            productArray = products
-            callback(products)
+            productArray = products.map(p=>sanitizeProduct(p))
+            callback(productArray)
         })
 }
 
 function getProductByName(name, callback) {
     getProducts(products => {
-        callback(products.find(p => p.Product_Name === name))
+        callback(products.find(p => p.name === name))
     })
 }
 

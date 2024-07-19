@@ -19,9 +19,9 @@ function createElementDrinkMenu(click, callback) {
 
 function createElementSizes(productName, callback) {
     getSizes(productName, sizes => {
-        callback(sizes.map(size => `<div class="option ${size === "grande" && "selected"}"><figure>
-            <img src="${ASSETS_PATH}/product-placeholder.png" alt="${size}" width="64"/>
-            <figcaption><p>${size}</p></figcaption>
+        callback(sizes.map(size => `<div class="option ${size.sizename === "grande" && "selected"}"><figure>
+            <img src="${ASSETS_PATH}/product-placeholder.png" alt="${size.sizename}" width="64"/>
+            <figcaption><p>${size.sizename}</p><p>${size.size && size.size + " ml"}</p></figcaption>
         </figure></div>`).join(""))
     })
 }
@@ -29,19 +29,19 @@ function createElementSizes(productName, callback) {
 function createElementIngredients(productName, callback) {
     getProductByName(productName, product => {
         callback(`<div class="option">
-        <p>Milk: ${product.Milk}</p>
-        <p>Whip: ${product.Whip}</p>
-        <p>Serv_Size_mL: ${product.Serv_Size_mL}</p>
-        <p>Calories: ${product.Calories}</p>
-        <p>Total_Fat_g: ${product.Total_Fat_g}</p>
-        <p>Saturated_Fat_g: ${product.Saturated_Fat_g}</p>
-        <p>Trans_Fat_g: ${product.Trans_Fat_g}</p>
-        <p>Cholesterol_mg: ${product.Cholesterol_mg}</p>
-        <p>Sodium_mg: ${product.Sodium_mg}</p>
-        <p>Total_Carbs_g: ${product.Total_Carbs_g}</p>
-        <p>Fiber_g: ${product.Fiber_g}</p>
-        <p>Sugar_g: ${product.Sugar_g}</p>
-        <p>Caffeine_mg: ${product.Caffeine_mg}</p>
+        <p><span>Milk</span></span>: ${product.milk}</p>
+        <p><span>Whip</span>: ${product.whip}</p>
+        <p><span>Size</span>: ${product.size}</p>
+        <p><span>Calories</span>: ${product.calories}</p>
+        <p><span>Total Fat</span>: ${product.totalFat} g</p>
+        <p><span>Saturated Fat</span>: ${product.saturatedFat} g</p>
+        <p><span>Trans Fat</span>: ${product.transFat} g</p>
+        <p><span>Cholesterol</span>: ${product.cholesterol} mg</p>
+        <p><span>Sodium</span>: ${product.sodium} mg</p>
+        <p><span>Total Carbs</span>: ${product.totalCarbs} g</p>
+        <p><span>Fiber</span>: ${product.fiber} g</p>
+        <p><span>Sugar</span>: ${product.sugar} g</p>
+        <p><span>Caffeine</span>: ${product.caffeine} mg</p>
         </div>`)
     })
 }

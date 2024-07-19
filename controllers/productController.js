@@ -1,23 +1,22 @@
-const { getProductSizesFromDB, getProductAttributesFromDB } = require('../models/productModel')
+const { getProductSizesFromDB } = require('../models/productModel')
 
-function getSizes(name, callback){
-    getProductSizesFromDB(name, sizes=>{
-        callback(Array.from(new Set(sizes)))
+const MilkType = ["None", "Nonfat", "2%", "Soy", "Coconut", "Whole"]
+
+const SizeMl = { short: 236, tall: 354, grande: 473, venti: 591, trenta: 887 }
+
+function getSizes(name, callback) {
+    getProductSizesFromDB(name, sizes => {
+        callback(Array.from(new Set(sizes)).map(size => { return { sizename: size, size: SizeMl[size] || "" } }))
     })
 }
 
-function getIngredients(callback){
-    getProductAttributesFromDB(attributes=>{
-        callback(attributes.filter(a=>a !== 'Product_Name' && a !== 'Size'))
-    })
-}
-
-function sanitizeProduct(productFromDB){
+function sanitizeProduct(productFromDB) {
     return {
-        name : productFromDB.Product_Name,
+        name: productFromDB.Product_Name,
         sizename: productFromDB.Size,
-        milk : productFromDB.Milk,
-        whip : productFromDB.Whip,
+        size: SizeMl[productFromDB.Size],
+        milk: MilkType[productFromDB.Milk],
+        whip: productFromDB.Whip ? "Yes" : "No",
         size: productFromDB.Serv_Size_mL,
         calories: productFromDB.Calories,
         totalFat: productFromDB.Total_Fat_g,
@@ -32,4 +31,4 @@ function sanitizeProduct(productFromDB){
     }
 }
 
-module.exports = { getSizes, getIngredients, sanitizeProduct }
+module.exports = { getSizes, sanitizeProduct }

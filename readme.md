@@ -5,7 +5,10 @@
 ## Resources
 
 ### JSON file
-https://github.com/PythonCoderUnicorn/starbucks
+#### Official Starbucks Nutritional dataset from Beverage Nutrition Information
+Font:  
+https://github.com/PythonCoderUnicorn/starbucks  
+It was converted from the format CSV to JSON  
 
 ## Git World
 ### Create GitHub repository
